@@ -26,7 +26,7 @@ jobs:
       backend_changed: ${{ steps.force.outputs.run_all == 'true' || steps.filter.outputs.backend == 'true' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -65,7 +65,7 @@ jobs:
       - name: Detect changes
         id: filter
         if: steps.force.outputs.run_all != 'true'
-        uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        uses: chainguard-actions/dorny-paths-filter@e490d6ff4dd8d5b9b7cdaeb1a31ab9ba89fc1008 # v4.0.3
         with:
           base: ${{ steps.range.outputs.base }}
           ref: ${{ steps.range.outputs.ref }}
@@ -89,7 +89,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           persist-credentials: false
       - name: Start containers
@@ -98,11 +98,11 @@ jobs:
           docker compose --file docker/compose/docker-compose.ci-test.yml up --detach
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: chainguard-actions/actions-setup-python@9bc81c95771c379a24d235203ec35ccbac904e5a # v7.0.0
         with:
           python-version: "${{ matrix.python-version }}"
       - name: Install uv
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: chainguard-actions/astral-sh-setup-uv@f1bbd5655a2eb7aba2d2a1448b028db76783b04e # v10.2.0
         with:
           version: ${{ env.DEFAULT_UV_VERSION }}
           enable-cache: true
@@ -138,13 +138,13 @@ jobs:
             pytest
       - name: Upload test results to Codecov
         if: always()
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        uses: chainguard-actions/codecov-codecov-action@8dcced2bbaafc8483f101c95e5a26d8426619a0c # v7.1.1
         with:
           flags: backend-python-${{ matrix.python-version }}
           files: junit.xml
           report_type: test_results
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+        uses: chainguard-actions/codecov-codecov-action@8dcced2bbaafc8483f101c95e5a26d8426619a0c # v7.1.1
         with:
           flags: backend-python-${{ matrix.python-version }}
           files: coverage.xml
@@ -166,16 +166,16 @@ jobs:
       PAPERLESS_SECRET_KEY: "ci-typing-not-a-real-secret"
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           persist-credentials: false
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: chainguard-actions/actions-setup-python@9bc81c95771c379a24d235203ec35ccbac904e5a # v7.0.0
         with:
           python-version: "${{ env.DEFAULT_PYTHON }}"
       - name: Install uv
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: chainguard-actions/astral-sh-setup-uv@f1bbd5655a2eb7aba2d2a1448b028db76783b04e # v10.2.0
         with:
           version: ${{ env.DEFAULT_UV_VERSION }}
           enable-cache: true
@@ -199,7 +199,7 @@ jobs:
             check \
             src/
       - name: Cache Mypy
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: chainguard-actions/actions-cache@244dfed44d8c4e917b332280fb2c1063eda3d9be # v6.1.0
         with:
           path: .mypy_cache
           # Keyed by OS, Python version, and dependency hashes
