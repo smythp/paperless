@@ -35,7 +35,7 @@ jobs:
     steps:
       - name: Label PR by file path or branch name
         # see .github/labeler.yml for the labeler config
-        uses: actions/labeler@bf12e9b00b37c5c0ca2b87b79b2daf7891dbda13 # v7.0.0
+        uses: chainguard-actions/actions-labeler@dfb288a084582a6b4f51ecf89d28b44a8f7d0254 # v7.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Label by size
@@ -49,7 +49,7 @@ jobs:
           fail_if_xl: 'false'
           excluded_files: /\.lock$/ /\.txt$/ ^src-ui/pnpm-lock\.yaml$ ^src-ui/messages\.xlf$ ^src/locale/en_US/LC_MESSAGES/django\.po$
       - name: Label by PR title
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             const pr = context.payload.pull_request;
@@ -75,7 +75,7 @@ jobs:
             }
       - name: Label bot-generated PRs
         if: ${{ contains(github.actor, 'dependabot') || contains(github.actor, 'crowdin-bot') }}
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             const pr = context.payload.pull_request;
@@ -100,7 +100,7 @@ jobs:
             }
       - name: Welcome comment
         if: ${{ !contains(github.actor, 'bot') }}
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             const user = context.payload.pull_request.user.login;

@@ -14,7 +14,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/stale@4391f3da665fdf50b6810c1a66712fb9ba21aa93 # v11.0.0
+      - uses: chainguard-actions/actions-stale@d1e58ee495905947a37db55758c68af99eb52ad7 # v11.0.0
         with:
           days-before-stale: 7
           days-before-close: 14
@@ -40,7 +40,7 @@ jobs:
       pull-requests: write
       discussions: write
     steps:
-      - uses: dessant/lock-threads@89ae32b08ed1a541efecbab17912962a5e38981c # v6.0.2
+      - uses: chainguard-actions/dessant-lock-threads@024fc84181d7392834d2a7e70945f3d6de5aa757 # v6.0.2
         with:
           issue-inactive-days: '30'
           pr-inactive-days: '30'
@@ -62,7 +62,7 @@ jobs:
     permissions:
       discussions: write
     steps:
-      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             function sleep(ms) {
@@ -121,7 +121,7 @@ jobs:
     permissions:
       discussions: write
     steps:
-      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             function sleep(ms) {
@@ -215,7 +215,7 @@ jobs:
     permissions:
       discussions: write
     steps:
-      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+      - uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         with:
           script: |
             function sleep(ms) {

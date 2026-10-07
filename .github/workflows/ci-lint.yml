@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           persist-credentials: false
       - name: Install Python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: chainguard-actions/actions-setup-python@9bc81c95771c379a24d235203ec35ccbac904e5a # v7.0.0
         with:
           python-version: "3.14"
       - name: Run prek
-        uses: j178/prek-action@4e14d07f9231acabce116ccfca13b13dd9755ece # v3.0.0
+        uses: chainguard-actions/j178-prek-action@5263d6a82f7afff651213ebc10281c003b865107 # v3.0.0

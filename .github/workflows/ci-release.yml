@@ -20,7 +20,7 @@ jobs:
       statuses: read
     steps:
       - name: Wait for Docker build
-        uses: lewagon/wait-on-check-action@369769072fe522a3a8a85c03c96af1e5242a1994 # v1.9.1
+        uses: chainguard-actions/lewagon-wait-on-check-action@d6b51be376a98bd3dba843310d5ad6dbdaa2958c # v1.9.1
         with:
           ref: ${{ github.sha }}
           check-name: 'Merge and Push Manifest'
@@ -35,16 +35,16 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           persist-credentials: false
       # ---- Frontend Build ----
       - name: Install pnpm
-        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        uses: chainguard-actions/pnpm-action-setup@c52d5dad1f53f21ac0284317f2432c499548f928 # v6.1.0
         with:
           package_json_file: src-ui/package.json
       - name: Use Node.js 24
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        uses: chainguard-actions/actions-setup-node@5b1db53754f77246b80c63a657eefd395655dd0e # v7.0.0
         with:
           node-version: 24.x
           package-manager-cache: false
@@ -55,11 +55,11 @@ jobs:
       # ---- Backend Setup ----
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: chainguard-actions/actions-setup-python@9bc81c95771c379a24d235203ec35ccbac904e5a # v7.0.0
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
       - name: Install uv
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: chainguard-actions/astral-sh-setup-uv@f1bbd5655a2eb7aba2d2a1448b028db76783b04e # v10.2.0
         with:
           version: ${{ env.DEFAULT_UV_VERSION }}
           enable-cache: false
@@ -137,7 +137,7 @@ jobs:
           sudo chown -R 1000:1000 paperless-ngx/
           tar -cJf paperless-ngx.tar.xz paperless-ngx/
       - name: Upload release artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: chainguard-actions/actions-upload-artifact@dc8d35a3347d79eda9033e7af73f508094dd41b5 # v7.0.1
         with:
           name: release
           path: dist/paperless-ngx.tar.xz
@@ -155,7 +155,7 @@ jobs:
       version: ${{ steps.get-version.outputs.version }}
     steps:
       - name: Download release artifact
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: chainguard-actions/actions-download-artifact@870c1dcb0e6fdf15dcac84d72470ef41e4b7b99c # v8.0.1
         with:
           name: release
           path: ./
@@ -172,7 +172,7 @@ jobs:
           fi
       - name: Create release and changelog
         id: create-release
-        uses: release-drafter/release-drafter@34d80673e067bdc0c24568d3af899c216adcfaa9 # v7.7.0
+        uses: chainguard-actions/release-drafter-release-drafter@4daf37b998bac9e6fb51c96a5ff1a6c1e9591238 # v7.7.0
         with:
           name: Paperless-ngx ${{ steps.get-version.outputs.version }}
           tag: ${{ steps.get-version.outputs.version }}
@@ -183,7 +183,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload release archive
-        uses: shogo82148/actions-upload-release-asset@aaba0f56bdbc1071f4af234d5cb16055e8a400de # v1.10.4
+        uses: chainguard-actions/shogo82148-actions-upload-release-asset@abe86d268053415d02483aaadbcfc42b88073a98 # v1.10.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           upload_url: ${{ steps.create-release.outputs.upload_url }}
@@ -203,17 +203,17 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: chainguard-actions/actions-checkout@279383ec3b8d70f964ffa5a2151ea3d2a5317ec6 # v7.0.1
         with:
           ref: main
           persist-credentials: true # for pushing changelog branch
       - name: Set up Python
         id: setup-python
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: chainguard-actions/actions-setup-python@9bc81c95771c379a24d235203ec35ccbac904e5a # v7.0.0
         with:
           python-version: ${{ env.DEFAULT_PYTHON_VERSION }}
       - name: Install uv
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        uses: chainguard-actions/astral-sh-setup-uv@f1bbd5655a2eb7aba2d2a1448b028db76783b04e # v10.2.0
         with:
           version: ${{ env.DEFAULT_UV_VERSION }}
           enable-cache: false
@@ -252,7 +252,7 @@ jobs:
           git commit -am "Changelog ${VERSION} - GHA"
           git push origin "${branch_name}"
       - name: Create pull request
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        uses: chainguard-actions/actions-github-script@90ea3578c9f973abcd1e50255ba3c1cd19216b51 # v9.0.0
         env:
           VERSION: ${{ needs.publish-release.outputs.version }}
         with:
