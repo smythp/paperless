@@ -1,0 +1,6 @@
+# Guardener hardened GitHub Actions recommendations and migration.
+# https://edu.chainguard.dev/chainguard/guardener/github/actions-security/
+enabled: true
+migrate:
+  enabled: true
+  period: "168h"
