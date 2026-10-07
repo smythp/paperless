@@ -1,0 +1,5 @@
+# Guardener container image suggestions and migration.
+# https://edu.chainguard.dev/chainguard/guardener/github/image-suggestions/
+enabled: true
+migrate:
+  enabled: true
