@@ -3139,7 +3139,7 @@ requires-dist = [
     { name = "django-compression-middleware", specifier = "~=0.5.0" },
     { name = "django-cors-headers", specifier = "~=4.9.0" },
     { name = "django-extensions", specifier = "~=4.1" },
-    { name = "django-filter", specifier = ">=25.1,<27.0" },
+    { name = "django-filter", specifier = ">=25.1,<27" },
     { name = "django-guardian", specifier = ">=3.3.3,<3.6" },
     { name = "django-multiselectfield", specifier = "~=1.0.1" },
     { name = "django-rich", specifier = "~=2.2.0" },
@@ -5483,11 +5483,11 @@ wheels = [
 
 [[package]]
 name = "types-setuptools"
-version = "80.10.0.20260124"
+version = "84.0.0.20260812"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/aa/7e/116539b9610585e34771611e33c88a4c706491fa3565500f5a63139f8731/types_setuptools-80.10.0.20260124.tar.gz", hash = "sha256:1b86d9f0368858663276a0cbe5fe5a9722caf94b5acde8aba0399a6e90680f20", size = 43299, upload-time = "2026-01-24T03:18:39.527Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4f/cd/3b2a3362a526f91c33f785a291462b2ec448ae531101c62372fc30a21f53/types_setuptools-84.0.0.20260812.tar.gz", hash = "sha256:09bedc248ebbb7a232c9419dfcdca329706e61bf2aa5743e9424d027f1d956b4", size = 46545, upload-time = "2026-08-12T03:52:42.316Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2b/7f/016dc5cc718ec6ccaa84fb73ed409ef1c261793fd5e637cdfaa18beb40a9/types_setuptools-80.10.0.20260124-py3-none-any.whl", hash = "sha256:efed7e044f01adb9c2806c7a8e1b6aa3656b8e382379b53d5f26ee3db24d4c01", size = 64333, upload-time = "2026-01-24T03:18:38.344Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/e5/3a41cab4066465593facd660b2683c017f3d88d3297cdd26db0677b8e479/types_setuptools-84.0.0.20260812-py3-none-any.whl", hash = "sha256:799c08e4bc6a288e8a0b538afb5f5ff320a08927ba8dbedb30c74ee3ba5d867b", size = 70320, upload-time = "2026-08-12T03:52:41.154Z" },
 ]
 
 [[package]]
