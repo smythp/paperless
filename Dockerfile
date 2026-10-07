@@ -5,7 +5,7 @@
 # Purpose: Compiles the frontend
 # Notes:
 #  - Does PNPM stuff with Typescript and such
-FROM --platform=$BUILDPLATFORM docker.io/node:24-trixie-slim AS compile-frontend
+FROM --platform=$BUILDPLATFORM docker.io/node:24.11-trixie-slim AS compile-frontend
 
 COPY ./src-ui /src/src-ui
 
@@ -30,7 +30,7 @@ RUN set -eux \
 # Purpose: Installs s6-overlay and rootfs
 # Comments:
 #  - Don't leave anything extra in here either
-FROM ghcr.io/astral-sh/uv:0.12.23-python3.14-trixie-slim AS s6-overlay-base
+FROM ghcr.io/astral-sh/uv:0.12.24-python3.14-trixie-slim AS s6-overlay-base
 
 WORKDIR /usr/src/s6
 
