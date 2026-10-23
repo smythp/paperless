@@ -27,12 +27,12 @@
 # documentation.
 services:
   broker:
-    image: docker.io/valkey/valkey:9-alpine
+    image: cgr.dev/chainguard.edu/valkey:9
     restart: unless-stopped
     volumes:
       - redisdata:/data
   db:
-    image: docker.io/library/postgres:18
+    image: cgr.dev/chainguard.edu/postgres-fips:18
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql
